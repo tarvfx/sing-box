@@ -1,0 +1,17 @@
+{
+  "inbounds": [
+    {
+      "type": "mixed",
+      "tag": "mixed-in",
+      "listen": "::",
+      "listen_port": 33300,
+      "users": [
+        {
+          "username": "lanbo",
+          "password": "Nq5H6Qi%ZIpr"
+        }
+      ],
+      "set_system_proxy": false
+    }
+  ]
+}
