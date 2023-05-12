@@ -3,6 +3,7 @@ package inbound
 import (
 	std_bufio "bufio"
 	"context"
+	E "github.com/sagernet/sing/common/exceptions"
 	"net"
 	"os"
 
@@ -55,7 +56,9 @@ func (h *Mixed) NewConnection(ctx context.Context, conn net.Conn, metadata adapt
 		return err
 	}
 	switch headerType {
-	case socks4.Version, socks5.Version:
+	case socks4.Version:
+		return E.New("socks4 protocol is not supported")
+	case socks5.Version:
 		return socks.HandleConnection0(ctx, conn, headerType, h.authenticator, h.upstreamUserHandler(metadata), adapter.UpstreamMetadata(metadata))
 	}
 	reader := std_bufio.NewReader(bufio.NewCachedReader(conn, buf.As([]byte{headerType})))
