@@ -2,14 +2,15 @@
 
 set -e -o pipefail
 
-./prebuild.sh
-
 if [ -d /usr/local/go ]; then
   export PATH="$PATH:/usr/local/go/bin"
 fi
 
 DIR=$(dirname "$0")
 PROJECT=$DIR/../..
+
+cd $DIR
+./prebuild.sh
 
 pushd $PROJECT
 #go install -v -trimpath -ldflags "-s -w -buildid=" -tags with_quic,with_wireguard,with_acme ./cmd/lanbo
