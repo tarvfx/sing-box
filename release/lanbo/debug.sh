@@ -9,8 +9,7 @@ fi
 DIR=$(dirname "$0")
 PROJECT=$DIR/../..
 
-cd $DIR
-./prebuild.sh
+source $DIR/prebuild.sh
 
 pushd $PROJECT
 git fetch

@@ -9,8 +9,7 @@ fi
 DIR=$(dirname "$0")
 PROJECT=$DIR/../..
 
-cd $DIR
-./prebuild.sh
+source $DIR/prebuild.sh
 
 pushd $PROJECT
 #go install -v -trimpath -ldflags "-s -w -buildid=" -tags with_quic,with_wireguard,with_acme ./cmd/lanbo
