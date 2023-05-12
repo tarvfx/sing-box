@@ -2,6 +2,8 @@
 
 set -e -o pipefail
 
+./prebuild.sh
+
 if [ -d /usr/local/go ]; then
   export PATH="$PATH:/usr/local/go/bin"
 fi
@@ -13,8 +15,8 @@ pushd $PROJECT
 git fetch
 git reset FETCH_HEAD --hard
 git clean -fdx
-#go install -v -trimpath -ldflags "-s -w -buildid=" -tags with_quic,with_wireguard,with_acme ./cmd/sing-box
-go install -v -trimpath -ldflags "-s -w -buildid=" ./cmd/sing-box
+#go install -v -trimpath -ldflags "-s -w -buildid=" -tags with_quic,with_wireguard,with_acme ./cmd/lanbo
+go install -v -trimpath -ldflags "-s -w -buildid=" ./cmd/lanbo
 popd
 
 sudo systemctl stop lanbo
